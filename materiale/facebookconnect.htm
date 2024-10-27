@@ -1,0 +1,16 @@
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/it_IT" type="text/javascript"></script>
+
+<script type="text/javascript">
+ FB_RequireFeatures(["XFBML"], function()
+  {
+     FB.Facebook.init("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "xd_receiver.htm", {"ifUserConnected":"facebook.htm"});
+  });
+</script>
+
+Mi spiace, ma devi fare il login per usare questa applicazione :) <br>
+
+fb:login-button <br>
+<fb:login-button v="2" size="medium" onlogin="window.location.reload(true);">Login</fb:login-button> <br>
+
+fb:login-button <br>
+<fb:login-button v="2" size="xlarge" onlogin="window.location.reload(true);">Login con Facebook</fb:login-button> <br>

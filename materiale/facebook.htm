@@ -1,0 +1,49 @@
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/it_IT" type="text/javascript"></script>
+
+<script type="text/javascript">
+ FB_RequireFeatures(["XFBML"], function()
+  {
+     FB.Facebook.init("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "xd_receiver.htm", {"ifUserNotConnected":"facebookconnect.htm"});
+  });
+</script>
+
+fb:name <br>
+Ciao <fb:name uid="loggedinuser" useyou="false" linked="true"></fb:name> <br>
+
+fb:profile-pic <br>
+<fb:profile-pic uid="loggedinuser" size="square" facebook-logo="true"></fb:profile-pic> <br>
+
+fb:name <br>
+Gaurda chi c'e' su Facebook : <fb:name uid="510445092" useyou="false" linked="true"></fb:name> <br>
+
+fb:friends-profile-pic <br>
+
+<div id="profile_pics"></div>
+<script type="text/javascript">
+var widget_div = document.getElementById("profile_pics");
+FB.ensureInit(function () {
+  FB.Facebook.get_sessionState().waitUntilReady(function() {
+  FB.Facebook.apiClient.friends_get(null, function(result) {
+    var markup = "<table>";
+    var num_friends = result ? Math.min(10, result.length) : 0;
+    if (num_friends > 0) {
+      markup = markup + "<tr>";
+      for (var i=0; i<num_friends; i++) {
+        markup += '<td><fb:name uid="'+result[i]+'" useyou="false" linked="true"></fb:name></td>';
+      }
+      markup = markup + "</tr>";
+      markup = markup + "<tr>";
+      for (var i=0; i<num_friends; i++) {
+        markup += '<td><fb:profile-pic size="square" uid="'+result[i]+'" facebook-logo="true"></fb:profile-pic></td>';
+      }
+      markup = markup + "</tr>";
+    }
+    markup = markup + "</table>";
+    widget_div.innerHTML = markup;
+    FB.XFBML.Host.parseDomElement(widget_div);
+  });
+  });
+});
+
+</script>
+
